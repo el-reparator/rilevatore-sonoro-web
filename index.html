@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#6B46C1">
+    <title>Rilevatore Suoni 24/7</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔔 Rilevatore Suoni 24/7</h1>
+            <p>Monitoraggio continuo anche a schermo spento</p>
+            <div id="status" class="status offline">Offline</div>
+        </header>
+
+        <div class="permission-banner" id="permissionBanner" style="display: none;">
+            <h3>⚠️ Permessi Richiesti</h3>
+            <p>Abilita microfono e notifiche per usare l'app</p>
+            <button onclick="requestPermissions()" class="btn-primary">Consenti Accesso</button>
+        </div>
+
+        <section class="card">
+            <h2>📝 Registra Suono di Riferimento</h2>
+            <div class="recording-controls">
+                <button id="recordBtn" onclick="toggleRecording()" class="btn-record">
+                    🎤 Registra Campanello
+                </button>
+                <div id="recordingStatus" class="recording-status"></div>
+            </div>
+            <div id="waveform" class="waveform"></div>
+        </section>
+
+        <section class="card">
+            <h2>👂 Monitoraggio Attivo</h2>
+            <div class="monitor-controls">
+                <button id="monitorBtn" onclick="toggleMonitoring()" class="btn-monitor" disabled>
+                    ▶️ Avvia Monitoraggio
+                </button>
+                <div class="sensitivity-control">
+                    <label>Sensibilità: <span id="sensitivityValue">75</span>%</label>
+                    <input type="range" id="sensitivity" min="50" max="95" value="75" 
+                           oninput="updateSensitivity(this.value)">
+                </div>
+            </div>
+            <div id="audioLevel" class="audio-level">
+                <div class="level-bar"></div>
+            </div>
+            <p class="info-text">Il monitoraggio continuerà anche a schermo spento</p>
+        </section>
+
+        <section class="card">
+            <h2>📧 Notifiche Email</h2>
+            <div class="email-config">
+                <input type="email" id="emailInput" placeholder="email@esempio.com" 
+                       class="email-input">
+                <button onclick="addEmail()" class="btn-add">+ Aggiungi</button>
+            </div>
+            <div id="emailList" class="email-list"></div>
+            <p class="info-text">Le email riceveranno notifiche immediate al rilevamento</p>
+        </section>
+
+        <section class="card">
+            <h2>🎵 Suoni Registrati</h2>
+            <div id="recordingsList" class="recordings-list">
+                <p class="empty-state">Nessun suono registrato</p>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>📊 Log Eventi</h2>
+            <div id="eventLog" class="event-log">
+                <p class="log-entry">In attesa di eventi...</p>
+            </div>
+            <button onclick="clearLog()" class="btn-secondary">Pulisci Log</button>
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
