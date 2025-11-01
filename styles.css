@@ -1,0 +1,301 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+header {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    color: #667eea;
+    margin-bottom: 10px;
+}
+
+.status {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.status.online {
+    background: #10b981;
+    color: white;
+}
+
+.status.offline {
+    background: #ef4444;
+    color: white;
+}
+
+.status.monitoring {
+    background: #f59e0b;
+    color: white;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.btn-primary, .btn-record, .btn-monitor, .btn-add, .btn-secondary {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background: #667eea;
+    color: white;
+    width: 100%;
+}
+
+.btn-record {
+    background: #8b5cf6;
+    color: white;
+    width: 100%;
+}
+
+.btn-record.recording {
+    background: #ef4444;
+    animation: pulse 1s infinite;
+}
+
+.btn-monitor {
+    background: #10b981;
+    color: white;
+    width: 100%;
+}
+
+.btn-monitor:disabled {
+    background: #d1d5db;
+    cursor: not-allowed;
+}
+
+.btn-monitor.active {
+    background: #f59e0b;
+}
+
+.btn-add {
+    background: #667eea;
+    color: white;
+}
+
+.btn-secondary {
+    background: #6b7280;
+    color: white;
+    margin-top: 10px;
+}
+
+button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.permission-banner {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.recording-controls, .monitor-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.waveform {
+    height: 100px;
+    background: #f3f4f6;
+    border-radius: 10px;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9ca3af;
+}
+
+.audio-level {
+    height: 40px;
+    background: #f3f4f6;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 15px 0;
+}
+
+.level-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #10b981, #f59e0b, #ef4444);
+    width: 0%;
+    transition: width 0.1s;
+}
+
+.sensitivity-control {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sensitivity-control input[type="range"] {
+    width: 100%;
+}
+
+.email-config {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.email-input {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+.email-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.email-tag {
+    background: #ede9fe;
+    color: #6b21a8;
+    padding: 8px 15px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.email-tag button {
+    background: none;
+    border: none;
+    color: #6b21a8;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 0;
+}
+
+.recordings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.recording-item {
+    background: #f9fafb;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.recording-item audio {
+    flex: 1;
+}
+
+.recording-item button {
+    background: #ef4444;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.event-log {
+    background: #1f2937;
+    color: #10b981;
+    padding: 15px;
+    border-radius: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+    font-family: monospace;
+    font-size: 14px;
+}
+
+.log-entry {
+    margin-bottom: 5px;
+    padding: 5px;
+    border-bottom: 1px solid #374151;
+}
+
+.log-entry.alert {
+    color: #fbbf24;
+    font-weight: bold;
+}
+
+.info-text {
+    color: #6b7280;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.empty-state {
+    color: #9ca3af;
+    text-align: center;
+    padding: 20px;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    header {
+        padding: 20px;
+    }
+    
+    .card {
+        padding: 15px;
+    }
+    
+    .recording-item {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
